@@ -17,7 +17,7 @@ public class Solution2163A {
         int n = fs.nextInt();
         int[] a = fs.nextIntArray(n);
         Arrays.sort(a);
-        for (int i = 1; i < n; i += 2) {
+        for (int i = 1; i + 1 < n; i += 2) {
             if (a[i] != a[i + 1]) {
                 out.println("NO");
                 return;
