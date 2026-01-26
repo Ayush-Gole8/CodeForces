@@ -13,7 +13,9 @@ static FastScanner fs = new FastScanner();
 
     static void solve() {
         int n = fs.nextInt();
-        out.println(n%3);
+        int rem = n % 3;
+        int add = (3 - rem) % 3;
+        out.println(add);
 
     } 
 
