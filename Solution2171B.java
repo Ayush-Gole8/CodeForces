@@ -20,16 +20,16 @@ public class Solution2171B {
             a[i] = fs.nextInt();
         boolean firstKnown = a[0] != -1;
         boolean lastKnown = a[n - 1] != -1;
-        long minAbs;
+        long minabso;
 
         if (firstKnown && lastKnown) {
-            minAbs = Math.abs((long) a[n - 1] - a[0]);
+            minabso = Math.abs((long) a[n - 1] - a[0]);
             for (int i = 0; i < n; i++) {
                 if (a[i] == -1)
                     a[i] = 0;
             }
         } else if (firstKnown || lastKnown) {
-            minAbs = 0;
+            minabso = 0;
             int val = firstKnown ? a[0] : a[n - 1];
             a[0] = val;
             a[n - 1] = val;
@@ -38,7 +38,7 @@ public class Solution2171B {
                     a[i] = 0;
             }
         } else {
-            minAbs = 0;
+            minabso = 0;
             for (int i = 0; i < n; i++) {
                 if (a[i] == -1)
                     a[i] = 0;
@@ -47,7 +47,7 @@ public class Solution2171B {
             a[n - 1] = 0;
         }
 
-        out.println(minAbs);
+        out.println(minabso);
         for (int i = 0; i < n; i++) {
             if (i > 0)
                 out.print(' ');

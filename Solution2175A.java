@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solution2175A {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -13,21 +13,19 @@ public class Template {
         out.flush();
     }
 
-   static void solve() {
+    static void solve() {
         int n = fs.nextInt();
         int[] a = fs.nextIntArray(n);
         Set<Integer> colors = new HashSet<>();
         for (int color : a) {
             colors.add(color);
         }
-        
-        int distinctCount = colors.size();
-        while (!colors.contains(distinctCount)) {
-            colors.add(distinctCount);
-            distinctCount = colors.size();
+
+        int d = colors.size();
+        while (!colors.contains(d)) {
+            d++;
         }
-        
-        out.println(distinctCount);
+        out.println(d);
     }
 
     static class FastScanner {
@@ -48,18 +46,6 @@ public class Template {
             }
         }
 
-        String next() {
-            StringBuilder sb = new StringBuilder();
-            int c;
-            while ((c = read()) <= 32) {
-                if (c == -1) return null;
-            }
-            do {
-                sb.append((char) c);
-            } while ((c = read()) > 32);
-            return sb.toString();
-        }
-
         int nextInt() {
             int c = read();
             while (c <= 32) c = read();
@@ -69,22 +55,6 @@ public class Template {
                 c = read();
             }
             int val = 0;
-            while (c > 32) {
-                val = val * 10 + (c - '0');
-                c = read();
-            }
-            return val * sgn;
-        }
-
-        long nextLong() {
-            int c = read();
-            while (c <= 32) c = read();
-            int sgn = 1;
-            if (c == '-') {
-                sgn = -1;
-                c = read();
-            }
-            long val = 0;
             while (c > 32) {
                 val = val * 10 + (c - '0');
                 c = read();
