@@ -1,20 +1,26 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solution2041E {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
     public static void main(String[] args) {
-        int t = fs.nextInt(); 
-        while (t-- > 0) {
-            solve();
-        }
+        solve();
         out.flush();
     }
 
    static void solve() {
-        // Implement problem-specific logic here
+        int a = fs.nextInt();
+        int b = fs.nextInt();
+        if (a == b) {
+            out.println(1);
+            out.println(a);
+            return;
+        }
+        int x = 3 * a - 2 * b; 
+        out.println(3);
+        out.println(x + " " + b + " " + b);
     }
 
     static class FastScanner {
