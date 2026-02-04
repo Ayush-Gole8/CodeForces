@@ -1,20 +1,41 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solution1703E {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
     public static void main(String[] args) {
-        int t = fs.nextInt(); 
+        int t = fs.nextInt();
         while (t-- > 0) {
             solve();
         }
         out.flush();
     }
 
-   static void solve() {
-        // Implement problem-specific logic here
+    static void solve() {
+        int n = fs.nextInt();
+        int[][] grid = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            String row = fs.next();
+            for (int j = 0; j < n; j++) {
+                grid[i][j] = row.charAt(j) - '0';
+            }
+        }
+        int operations = 0;
+        for (int i = 0; i < n / 2; i++) {
+            for (int j = i; j < n - 1 - i; j++) {
+                int c1 = grid[i][j];
+                int c2 = grid[j][n - 1 - i];
+                int c3 = grid[n - 1 - i][n - 1 - j];
+                int c4 = grid[n - 1 - j][i];
+                int sum = c1 + c2 + c3 + c4;
+                operations += Math.min(sum, 4 - sum);
+            }
+        }
+
+        out.println(operations);
     }
 
     static class FastScanner {
@@ -27,7 +48,8 @@ public class Template {
                 if (ptr >= len) {
                     len = in.read(buffer);
                     ptr = 0;
-                    if (len <= 0) return -1;
+                    if (len <= 0)
+                        return -1;
                 }
                 return buffer[ptr++];
             } catch (IOException e) {
@@ -39,7 +61,8 @@ public class Template {
             StringBuilder sb = new StringBuilder();
             int c;
             while ((c = read()) <= 32) {
-                if (c == -1) return null;
+                if (c == -1)
+                    return null;
             }
             do {
                 sb.append((char) c);
@@ -49,7 +72,8 @@ public class Template {
 
         int nextInt() {
             int c = read();
-            while (c <= 32) c = read();
+            while (c <= 32)
+                c = read();
             int sgn = 1;
             if (c == '-') {
                 sgn = -1;
@@ -65,7 +89,8 @@ public class Template {
 
         long nextLong() {
             int c = read();
-            while (c <= 32) c = read();
+            while (c <= 32)
+                c = read();
             int sgn = 1;
             if (c == '-') {
                 sgn = -1;
@@ -81,7 +106,8 @@ public class Template {
 
         int[] nextIntArray(int n) {
             int[] a = new int[n];
-            for (int i = 0; i < n; i++) a[i] = nextInt();
+            for (int i = 0; i < n; i++)
+                a[i] = nextInt();
             return a;
         }
     }
