@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solution2195C {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -14,7 +14,45 @@ public class Template {
     }
 
     static void solve() {
-        // Implement problem-specific logic here
+        int n = fs.nextInt();
+        int[] a = fs.nextIntArray(n);
+        int inf = (int) 1e9;
+        boolean[][] ok = new boolean[7][7];
+        for (int i = 1; i <= 6; i++) {
+            for (int j = 1; j <= 6; j++) {
+                if (i != j && i + j != 7)
+                    ok[i][j] = true;
+            }
+        }
+        int[] dp = new int[7];
+        int[] ndp = new int[7];
+        Arrays.fill(dp, inf);
+
+        for (int v = 1; v <= 6; v++) {
+            dp[v] = (a[0] == v ? 0 : 1);
+        }
+
+        for (int i = 1; i < n; i++) {
+            Arrays.fill(ndp, inf);
+            for (int v = 1; v <= 6; v++) {
+                int c = (a[i] == v ? 0 : 1);
+                for (int u = 1; u <= 6; u++) {
+                    if (ok[u][v]) {
+                        ndp[v] = Math.min(ndp[v], dp[u] + c);
+                    }
+                }
+            }
+            int[] t = dp;
+            dp = ndp;
+            ndp = t;
+        }
+
+        int ans = inf;
+        for (int v = 1; v <= 6; v++) {
+            ans = Math.min(ans, dp[v]);
+        }
+
+        out.println(ans);
     }
 
     static class FastScanner {
