@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solution2195F {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -14,7 +14,32 @@ public class Template {
     }
 
     static void solve() {
-        // Implement problem-specific logic here
+        int n = fs.nextInt();
+
+        long[] a = new long[n];
+        long[] b = new long[n];
+        long[] c = new long[n];
+
+        int pos = 0, neg = 0;
+
+        for (int i = 0; i < n; i++) {
+            a[i] = fs.nextLong();
+            b[i] = fs.nextLong();
+            c[i] = fs.nextLong();
+
+            if (a[i] > 0)
+                pos++;
+            else
+                neg++;
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (a[i] > 0)
+                out.print(pos + " ");
+            else
+                out.print(neg + " ");
+        }
+        out.println();
     }
 
     static class FastScanner {

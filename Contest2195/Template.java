@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solution2195F {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -14,7 +14,23 @@ public class Template {
     }
 
     static void solve() {
-        // Implement problem-specific logic here
+        int n = fs.nextInt();
+        int gridSize = 3 * n;
+
+        List<int[]> triangles = new ArrayList<>();
+        for (int i = 1; i < gridSize; i += 2) {
+            for (int j = 1; j < gridSize; j += 2) {
+                if (i + 1 <= gridSize && j + 1 <= gridSize) {
+                    triangles.add(new int[] { i, j, i + 1, j, i, j + 1 });
+                    triangles.add(new int[] { i + 1, j + 1, i + 1, j, i, j + 1 });
+                }
+            }
+        }
+
+        out.println(triangles.size());
+        for (int[] tri : triangles) {
+            out.println(tri[0] + " " + tri[1] + " " + tri[2] + " " + tri[3] + " " + tri[4] + " " + tri[5]);
+        }
     }
 
     static class FastScanner {

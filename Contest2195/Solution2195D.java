@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solution2195D {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -14,7 +14,29 @@ public class Template {
     }
 
     static void solve() {
-        // Implement problem-specific logic here
+        long n = fs.nextLong();
+        long[] a = fs.nextLongArray(n);
+        long[] ans = new long[(int) n];
+        for (int i = 1; i < n - 1; i++) {
+            ans[i] = (a[i - 1] - 2 * a[i] + a[i + 1]) / 2;
+        }
+        long sum = 0;
+        for (int i = 1; i < n - 1; i++) {
+            sum += ans[i] * i;
+        }
+        ans[(int) (n - 1)] = (a[0] - sum) / (n - 1);
+
+        long sum2 = 0;
+        for (int i = 1; i < n - 1; i++) {
+            sum2 += ans[i] * (n - 1 - i);
+        }
+        ans[0] = (a[(int) (n - 1)] - sum2) / (n - 1);
+
+        for (int i = 0; i < n; i++) {
+            out.print(ans[i] + (i == n - 1 ? "" : " "));
+        }
+        out.println();
+
     }
 
     static class FastScanner {

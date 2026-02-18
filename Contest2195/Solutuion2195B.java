@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Template {
+public class Solutuion2195B {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -14,7 +14,20 @@ public class Template {
     }
 
     static void solve() {
-        // Implement problem-specific logic here
+        int n = fs.nextInt();
+        int[] a = fs.nextIntArray(n);
+        for (int i = 0; i < n; i++) {
+            int val = a[i];
+            int curr = i + 1; 
+            int vall = val >> Integer.numberOfTrailingZeros(val);
+            int index = curr >> Integer.numberOfTrailingZeros(curr);
+            if (vall != index) {
+                out.println("NO");
+                return;
+            }
+        }
+
+        out.println("YES");
     }
 
     static class FastScanner {
@@ -34,13 +47,6 @@ public class Template {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-
-        public long[] nextLongArray(long n) {
-            long[] a = new long[(int) n];
-            for (int i = 0; i < n; i++)
-                a[i] = nextLong();
-            return a;
         }
 
         String next() {
