@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution2148A {
+public class Solution2114A {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -14,10 +14,14 @@ public class Solution2148A {
     }
 
     static void solve() {
-        int x = fs.nextInt();
-        int n = fs.nextInt();
-        if (n % 2 == 0) out.println(0);
-        else out.println(x);
+        String s = fs.next();
+        int y = Integer.parseInt(s);
+        int r = (int) Math.sqrt(y);
+        if (r * r == y) {
+            out.println(0 + " " + r);
+        } else {
+            out.println(-1);
+        }
     }
 
     static class FastScanner {
