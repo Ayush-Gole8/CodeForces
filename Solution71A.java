@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution2198C2 {
+public class Solution71A {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
@@ -14,42 +14,15 @@ public class Solution2198C2 {
     }
 
     static void solve() {
-        int n = fs.nextInt();
-        long[] a = new long[n];
-        for (int i = 0; i < n; i++) a[i] = fs.nextLong();
-
-        // map: root_value -> count of starting points with that root
-        TreeMap<Long, Long> map = new TreeMap<>();
-        long answer = 0;
-
-        for (int i = 0; i < n; i++) {
-            long v = a[i];
-            long newRoots = 0;
-
-            if (i > 0) {
-                if (v > a[i - 1] + 1) {
-                    // All existing starting points start a new root
-                    newRoots = i;
-                    map.clear();
-                } else {
-                    // Starting points with root >= v start a new root
-                    NavigableMap<Long, Long> tail = map.tailMap(v, true);
-                    for (Long cnt : tail.values()) {
-                        newRoots += cnt;
-                    }
-                    tail.clear();
-                }
-            }
-
-            // Merge: all new roots + new starting point l=i get root = v
-            map.merge(v, newRoots + 1, Long::sum);
-
-            // Each new root contributes to (n - i) subarrays ending at i..n-1
-            answer += (long) (n - i) * (newRoots + 1);
+        String s = fs.next();
+        if (s.length() > 10) {
+            out.println(s.charAt(0) + Integer.toString(s.length() - 2) + s.charAt(s.length() - 1));
+        } else {
+            out.println(s);
         }
-
-        out.println(answer);
     }
+
+    static class FastScanner {
         private final InputStream in = System.in;
         private final byte[] buffer = new byte[1 << 16];
         private int ptr = 0, len = 0;

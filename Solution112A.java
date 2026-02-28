@@ -1,55 +1,26 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution2198C2 {
+public class Solution112A {
     static FastScanner fs = new FastScanner();
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
     public static void main(String[] args) {
-        int t = fs.nextInt();
-        while (t-- > 0) {
-            solve();
-        }
+        solve();
         out.flush();
     }
 
     static void solve() {
-        int n = fs.nextInt();
-        long[] a = new long[n];
-        for (int i = 0; i < n; i++) a[i] = fs.nextLong();
+        String a = fs.next();
+        String b = fs.next();
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        int cmp = a.compareTo(b);
+        out.println(Integer.compare(cmp, 0));
 
-        // map: root_value -> count of starting points with that root
-        TreeMap<Long, Long> map = new TreeMap<>();
-        long answer = 0;
-
-        for (int i = 0; i < n; i++) {
-            long v = a[i];
-            long newRoots = 0;
-
-            if (i > 0) {
-                if (v > a[i - 1] + 1) {
-                    // All existing starting points start a new root
-                    newRoots = i;
-                    map.clear();
-                } else {
-                    // Starting points with root >= v start a new root
-                    NavigableMap<Long, Long> tail = map.tailMap(v, true);
-                    for (Long cnt : tail.values()) {
-                        newRoots += cnt;
-                    }
-                    tail.clear();
-                }
-            }
-
-            // Merge: all new roots + new starting point l=i get root = v
-            map.merge(v, newRoots + 1, Long::sum);
-
-            // Each new root contributes to (n - i) subarrays ending at i..n-1
-            answer += (long) (n - i) * (newRoots + 1);
-        }
-
-        out.println(answer);
     }
+
+    static class FastScanner {
         private final InputStream in = System.in;
         private final byte[] buffer = new byte[1 << 16];
         private int ptr = 0, len = 0;
