@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 public class Solution2094A {
     static FastScanner fs = new FastScanner();
