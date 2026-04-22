@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Poster</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+        }
+        .poster-container {
+            background-color: white;
+            width: 1200px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border: 2px solid #000;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin: 10px 0;
+            color: #000080;
+        }
+        .header h2 {
+            font-size: 24px;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+        .student-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        
+        /* Layout Grids */
+        .row-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .row-full {
+            margin-bottom: 30px;
+        }
+        .row-3-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .section-title {
+            background-color: #000080;
+            color: white;
+            padding: 10px;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 0;
+        }
+        .section-content {
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: justify;
+            flex-grow: 1; 
+        }
+        .box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        ul {
+            padding-left: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .results-images-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-placeholder {
+            flex: 1;
+            height: 220px;
+            background-color: #e0e0e0;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="poster-container">
+    <div class="header">
+        <h2>Department of Computer Engineering | Machine Learning Semester 6 | Academic Year 2025-2026</h2>
+        <h1>NeuroScan XAI: Transparent Brain MRI Tumor Analysis Through Explainable and Ethical AI</h1>
+        
+        <div class="student-info" style="justify-content: right;">
+            <span>Guide Name: Dr. Kavita Shirsat</span>
+        </div>
+        
+        <div class="student-info" style="font-weight: normal; justify-content: center; gap: 100px;">
+            <span>Ayush Gole (Roll No.: 23102A0005)</span>
+            <span>Sarvadnya Kakad (Roll No.: 23102A0009)</span>
+        </div>
+    </div>
+
+    <div class="row-2-col">
+        <div class="column-wrapper">
+            <div class="box" style="margin-bottom: 30px; height: auto;">
+                <h3 class="section-title">Abstract / Introduction</h3>
+                <div class="section-content">
+                    Brain MRI analysis is an important task in healthcare, but AI systems are often treated like final answers without showing how they reached a decision. This project addresses that problem by building a brain MRI tumor classification system that not only predicts the result, but also shows evidence, confidence context, bias signals, and an ethics report. The system classifies scans into glioma, meningioma, pituitary and no tumor.
+                </div>
+            </div>
+            <div class="box" style="height: auto;">
+                <h3 class="section-title">Objectives</h3>
+                <div class="section-content">
+                    <ul>
+                        <li>Classify brain MRI images accurately into specific tumor types.</li>
+                        <li>Provide explainable predictions using generated heatmaps.</li>
+                        <li>Reduce blind trust in model output by showing reasoning.</li>
+                        <li>Make ethical risk visible through transparency and fairness reporting.</li>
+                        <li>Serve as an educational decision-support prototype rather than a clinical diagnostic device.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="column-wrapper">
+            <div class="box">
+                <h3 class="section-title">Methodology</h3>
+                <div class="section-content">
+                    <p>EfficientNet-B0 is used as the base classifier because it is a parameter-efficient model with a good accuracy-to-compute balance. Grad-CAM++ generates explainable heatmaps for visual verification.</p>
+                    <strong>Workflow:</strong>
+                    <ul>
+                        <li>MRI Upload</li>
+                        <li>Preprocessing</li>
+                        <li>EfficientNet-B0 Model Inference</li>
+                        <li>Prediction Output & Class Probabilities</li>
+                        <li>Grad-CAM++ Heatmap Overlay</li>
+                        <li>Confidence & Entropy Context</li>
+                        <li>Bias / Transparency Analysis</li>
+                        <li>Ethics Dashboard / Final Report</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-full">
+        <div class="box">
+            <h3 class="section-title">Results</h3>
+            <div class="section-content">
+                <p>The API provides MRI prediction with probabilities, Grad-CAM++ overlays, and a bias audit. The ethics report includes transparency metrics, a fairness summary, a saliency audit, a model card, and mitigations.</p>
+                <div class="results-images-container">
+                    <div class="image-placeholder" style="padding: 0; border: none; background: none;">
+                        <img src="mri-upload.png" alt="MRI Upload Page" style="width: 100%; height: 100%; object-fit: contain; border: 1px solid #ccc;">
+                    </div>
+                    <div class="image-placeholder" style="padding: 0; border: none; background: none;">
+                        <img src="heatmap.png" alt="Grad-CAM++ Heatmap" style="width: 100%; height: 100%; object-fit: contain; border: 1px solid #ccc;">
+                    </div>
+                    <div class="image-placeholder" style="padding: 0; border: none; background: none;">
+                        <img src="ethics-dashboard.png" alt="Ethics Dashboard" style="width: 100%; height: 100%; object-fit: contain; border: 1px solid #ccc;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-3-col">
+        <div class="box">
+            <h3 class="section-title">Conclusion</h3>
+            <div class="section-content">
+                <ul>
+                    <li>Demonstrates that medical AI should provide reasons alongside predictions.</li>
+                    <li>Improves trust, interpretability, and accountability in brain MRI analysis.</li>
+                    <li>Successfully combines classification, explainability, and ethics reporting.</li>
+                    <li>Functions as a responsible AI prototype designed for educational use.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3 class="section-title">Future Scope</h3>
+            <div class="section-content">
+                <ul>
+                    <li>Train on larger and multi-source datasets to expand data diversity.</li>
+                    <li>Improve model generalization across different MRI scanners and institutions.</li>
+                    <li>Add classification capabilities for more tumor classes.</li>
+                    <li>Integrate expert review for stronger real-world validation.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3 class="section-title">References</h3>
+            <div class="section-content" style="font-size: 15px; line-height: 1.3;">
+                <ul>
+                    <li style="margin-bottom: 10px;">Tan, M., & Le, Q. (2019). EfficientNet: Rethinking model scaling for convolutional neural networks. <em>ICML</em>, 6105-6114.</li>
+                    <li style="margin-bottom: 10px;">Chattopadhyay, A., et al. (2018). Grad-CAM++: Generalized gradient-based visual explanations for deep convolutional networks. <em>IEEE WACV</em>, 839-847.</li>
+                    <li style="margin-bottom: 10px;">Nickparvar, M. (2021). Brain Tumor MRI Dataset. <em>Kaggle</em>. https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset</li>
+                    <li style="margin-bottom: 10px;">Deepak, S., & Ameer, P. M. (2019). Brain tumor classification using deep CNN features via transfer learning. <em>Computers in Biology and Medicine</em>, 111, 103345.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
