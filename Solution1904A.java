@@ -12,34 +12,41 @@ public class Solution1904A {
         }
         out.flush();
     }
+
     static void solve() {
-        int a = fs.nextInt();
-        int b = fs.nextInt();
-        int xK = fs.nextInt();
-        int yK = fs.nextInt();
-        int xQ = fs.nextInt();
-        int yQ = fs.nextInt();
-        int[] dx = {a, a, -a, -a, b, b, -b, -b};
-        int[] dy = {b, -b, b, -b, a, -a, a, -a};
-        Set<Long> kingg = new HashSet<>();
-        for (int i = 0; i < 8; i++) {
-            long px = xK - dx[i];
-            long py = yK - dy[i];
-            kingg.add(encode(px, py));
+        long a = fs.nextLong();
+        long b = fs.nextLong();
+        long xK = fs.nextLong();
+        long yK = fs.nextLong();
+        long xQ = fs.nextLong();
+        long yQ = fs.nextLong();
+
+        int[] dx = { -1, 1, -1, 1 };
+        int[] dy = { -1, -1, 1, 1 };
+
+        Set<String> kingHits = new HashSet<>();
+        Set<String> queenHits = new HashSet<>();
+
+        for (int j = 0; j < 4; j++) {
+            kingHits.add(encode(xK + dx[j] * a, yK + dy[j] * b));
+            kingHits.add(encode(xK + dx[j] * b, yK + dy[j] * a));
+
+            queenHits.add(encode(xQ + dx[j] * a, yQ + dy[j] * b));
+            queenHits.add(encode(xQ + dx[j] * b, yQ + dy[j] * a));
         }
-        int cnt = 0;
-        for (int i = 0; i < 8; i++) {
-            long px = xQ - dx[i];
-            long py = yQ - dy[i];
-            if (kingg.contains(encode(px, py))) {
-                cnt++;
+
+        int ans = 0;
+        for (String pos : kingHits) {
+            if (queenHits.contains(pos)) {
+                ans++;
             }
         }
 
-        out.println(cnt);
+        out.println(ans);
     }
-    static long encode(long x, long y) {
-        return (x << 32) ^ (y & 0xffffffffL);
+
+    static String encode(long x, long y) {
+        return x + "," + y;
     }
 
     static class FastScanner {
@@ -61,36 +68,6 @@ public class Solution1904A {
             }
         }
 
-        String next() {
-            StringBuilder sb = new StringBuilder();
-            int c;
-            while ((c = read()) <= 32) {
-                if (c == -1)
-                    return null;
-            }
-            do {
-                sb.append((char) c);
-            } while ((c = read()) > 32);
-            return sb.toString();
-        }
-
-        int nextInt() {
-            int c = read();
-            while (c <= 32)
-                c = read();
-            int sgn = 1;
-            if (c == '-') {
-                sgn = -1;
-                c = read();
-            }
-            int val = 0;
-            while (c > 32) {
-                val = val * 10 + (c - '0');
-                c = read();
-            }
-            return val * sgn;
-        }
-
         long nextLong() {
             int c = read();
             while (c <= 32)
@@ -106,6 +83,10 @@ public class Solution1904A {
                 c = read();
             }
             return val * sgn;
+        }
+
+        int nextInt() {
+            return (int) nextLong();
         }
     }
 }
