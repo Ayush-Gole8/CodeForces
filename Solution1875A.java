@@ -14,13 +14,13 @@ public class Solution1875A {
     }
 
     static void solve() {
-    long a = fs.nextLong();
+    long aa = fs.nextLong();
     long b = fs.nextLong();
     int n = (int) fs.nextLong();
     long sum = b;
     for (int i = 0; i < n; i++) {
         long x = fs.nextLong();
-        sum += Math.min(x, a - 1);
+        sum += Math.min(x, aa - 1);
     }
     
     out.println(sum);
