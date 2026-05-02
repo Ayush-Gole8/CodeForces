@@ -1,0 +1,6 @@
+# Local temp/problem cache
+.cph/
+.cph-ng/
+
+# Binary artifacts
+*.bin
