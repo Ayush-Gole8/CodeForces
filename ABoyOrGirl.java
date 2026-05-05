@@ -373,17 +373,19 @@ public class ABoyOrGirl {
     // ─────────────────────────────────────────────────────────
     static void solve() {
         String s = sc.next();
-        if(s.length()%2!=0)
+        long dC = s.chars().distinct().count();
+        if (dC % 2 == 0) {
             println("CHAT WITH HER!");
-        else
+        } else {
             println("IGNORE HIM!");
+        }
     }
 
     // ─────────────────────────────────────────────────────────
     // Main
     // ─────────────────────────────────────────────────────────
     public static void main(String[] args) {
-        int t = sc.nextInt();           // set t = 1 for single-test problems
+        int t = 1;           // set t = 1 for single-test problems
         while (t-- > 0) solve();
         out.flush();
     }
