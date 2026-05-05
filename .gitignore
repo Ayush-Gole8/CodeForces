@@ -4,3 +4,4 @@
 
 # Binary artifacts
 *.bin
+*.class
