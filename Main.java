@@ -29,7 +29,7 @@
 import java.io.*;
 import java.util.*;
 
-class Main {
+public class Main {
 
     // ─────────────────────────────────────────────────────────
     // [IO]
