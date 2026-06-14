@@ -371,14 +371,27 @@ public class BUniqueness {
     // ─────────────────────────────────────────────────────────
     // [SOLVE]  ← Write your problem logic here
     // ─────────────────────────────────────────────────────────
-    static void solve() {
-        int n = sc.nextInt();
-        int[] arr = sc.nextIntArray(n);
-        HashSet<Integer> set = new HashSet<>();
-        for(int ele:arr){
-            set.add(ele);
+    static void solve(){
+        int n=sc.nextInt();
+        int[] a=sc.nextIntArray(n);
+        int ans=n;
+        for(int i=0;i<=n;i++){
+            boolean ok=true;
+            HashSet<Integer> st=new HashSet<>();
+            for(int k=0;k<i;k++){
+                if(!st.add(a[k])){
+                    ok=false;
+                    break;
+                }
+            }
+            if(!ok)break;
+            ans=Math.min(ans,n-i);
+            for(int j=n-1;j>=i;j--){
+                if(!st.add(a[j]))break;
+                ans=Math.min(ans,j-i);
+            }
         }
-        System.out.println((n-set.size()));
+        out.println(ans);
     }
 
     // ─────────────────────────────────────────────────────────
