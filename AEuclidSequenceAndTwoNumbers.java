@@ -29,7 +29,7 @@
 import java.io.*;
 import java.util.*;
 
-public class BUniqueness {
+public class AEuclidSequenceAndTwoNumbers {
 
     // ─────────────────────────────────────────────────────────
     // [IO]
@@ -373,32 +373,19 @@ public class BUniqueness {
     // ─────────────────────────────────────────────────────────
     static void solve(){
         int n=sc.nextInt();
-        int[] a=sc.nextIntArray(n);
-        int ans=n;
-        for(int i=0;i<=n;i++){
-            boolean ok=true;
-            HashSet<Integer> st=new HashSet<>();
-            for(int k=0;k<i;k++){
-                if(!st.add(a[k])){
-                    ok=false;
-                    break;
-                }
-            }
-            if(!ok)break;
-            ans=Math.min(ans,n-i);
-            for(int j=n-1;j>=i;j--){
-                if(!st.add(a[j]))break;
-                ans=Math.min(ans,j-i);
-            }
-        }
-        out.println(ans);
+        long[] a=sc.nextLongArray(n);
+        Arrays.sort(a);
+        boolean ok=true;
+        for(int i=2;i<n;i++)if(a[i]%a[i-1]!=a[i-2]){ok=false;break;}
+        if(ok)out.println(a[n-1]+" "+a[n-2]);
+        else out.println("-1");
     }
 
     // ─────────────────────────────────────────────────────────
     // Main
     // ─────────────────────────────────────────────────────────
     public static void main(String[] args) {
-        int t = 1;           // set t = 1 for single-test problems
+        int t = sc.nextInt();           // set t = 1 for single-test problems
         while (t-- > 0) solve();
         out.flush();
     }
