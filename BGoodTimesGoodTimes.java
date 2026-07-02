@@ -371,60 +371,19 @@ public class BGoodTimesGoodTimes {
     // ─────────────────────────────────────────────────────────
     // [SOLVE]  ← Write your problem logic here
     // ─────────────────────────────────────────────────────────
-    static long[] vy;
-    static Map<Long,Long> precomp = new HashMap<>();
-
-    static void gen(long c,int d1,int d2,int l,Set<Long> st){
-        if(c>=2&&c<=1_000_000_000L) st.add(c);
-        if(l>=10||c>1_000_000_000L) return;
-        gen(c*10+d1,d1,d2,l+1,st);
-        gen(c*10+d2,d1,d2,l+1,st);
-    }
-
-    static void good(){
-        Set<Long> st=new HashSet<>();
-        for(int d1=0;d1<=9;d1++){
-            for(int d2=d1+1;d2<=9;d2++){
-                if(d1!=0) gen(d1,d1,d2,1,st);
-                if(d2!=0) gen(d2,d1,d2,1,st);
-            }
+    static void solve() {
+        int x=sc.nextInt();
+        int y=1;
+        while(x>0){
+            y*=10;
+            x/=10;
         }
-        List<Long> v=new ArrayList<>(st);
-        Collections.sort(v);
-        vy=new long[v.size()];
-        for(int i=0;i<v.size();i++) vy[i]=v.get(i);
+        out.println(y + 1);
     }
 
-    static boolean chk(long n){
-        int m=0,cnt=0;
-        while(n>0){
-            int d=(int)(n%10);
-            int bit=1<<d;
-            if((m&bit)==0){
-                if(++cnt>2) return false;
-                m|=bit;
-            }
-            n/=10;
-        }
-        return true;
-    }
-
-    static void solve(){
-        long x=sc.nextLong();
-        out.println(precomp.get(x));
-    }
 
     public static void main(String[] args){
-        good();
-        for(long x:vy){
-            if(x>=100_000_000L) break;
-            for(long y:vy){
-                if(chk(x*y)){
-                    precomp.put(x,y);
-                    break;
-                }
-            }
-        }
+        
         int t=sc.nextInt();
         while(t-->0) solve();
         out.flush();
