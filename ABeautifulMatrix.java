@@ -372,13 +372,13 @@ public class ABeautifulMatrix {
     // [SOLVE]  ← Write your problem logic here
     // ─────────────────────────────────────────────────────────
     static void solve() {
-        int x=0,y=0;
+        int xx=0,y=0;
         for(int i=1;i<=5;i++)
             for(int j=1;j<=5;j++){
                 int v=sc.nextInt();
-                if(v==1){x=i;y=j;}
+                if(v==1){xx=i;y=j;}
             }
-        out.println(Math.abs(x-3)+Math.abs(y-3));
+        out.println(Math.abs(xx-3)+Math.abs(y-3));
     }
 
     // ─────────────────────────────────────────────────────────
